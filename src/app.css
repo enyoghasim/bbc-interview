@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+div#app {
+  text-align: -webkit-center;
+}
+div.search-box-container {
+  max-width: 20rem;
+}
