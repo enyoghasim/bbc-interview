@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <div class="section-left">
+      <div class="image-area">
+        <img class="placeholder-logo" :src="Logo" alt="logo" />
+      </div>
+    </div>
     <div class="search-box-container">
       <SearchBox
         customName="search"
@@ -14,6 +19,10 @@
 <script>
 import SearchBox from "./components/search/index";
 
+import Logo from "./assets/icons/bbc.logo.svg";
+
+import JsonData from "./data/english.json";
+
 export default {
   name: "App",
   components: {
@@ -27,11 +36,13 @@ export default {
   data() {
     return {
       inputText: "",
+      Logo,
+      JsonData,
     };
   },
 };
 </script>
 
 <style>
-@import "./app.css";
+@import "./styles/app.css";
 </style>

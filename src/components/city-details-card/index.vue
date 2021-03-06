@@ -5,6 +5,8 @@
 <script>
 export default {
   name: "CityDetails",
-  props: {},
+  props: {
+      
+  },
 };
 </script>
