@@ -59,6 +59,16 @@ export default {
           : convertToArray(EnglishJsonData);
       return listFunction;
     },
+    data() {
+      var dataFunction =
+        this.language === "ENGLISH"
+          ? EnglishJsonData
+          : this.language === "HINDI"
+          ? HindiJsonData
+          : EnglishJsonData;
+
+      return dataFunction;
+    },
   },
 };
 </script>
