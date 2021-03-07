@@ -6,6 +6,7 @@
       :name="customName"
       :class="`input-component ${customClass}`"
       :placeholder="placeHolderText"
+      @keyup="handleKeyup"
     />
   </div>
 </template>
@@ -37,6 +38,14 @@ export default {
         newValue: event.target.value,
         nameOfInput: this.customName,
       });
+    },
+    handleKeyUp(event) {
+      var char = event.which || event.keyCode;
+      if (char === 38) {
+        this.$emit("KEYUPP", { type: "UP", name: this.customName });
+      } else if (char === 40) {
+        this.$emit("KEYUPP", { type: "DOWN", name: this.customName });
+      }
     },
   },
 };

@@ -1,21 +1,34 @@
 <template>
   <div id="app">
-    <section class="section-left">
-      <div class="image-area">
-        <img class="placeholder-logo" :src="Logo" alt="logo" />
+    <div class="section-alert">
+      <div class="text">
+        YOU ARE CURRENTY BROWSING IN ENGLISH(US) : हिन्दू में अनुवाद
       </div>
-    </section>
-    <section class="section-right">
-      <div class="search-box-container">
-        <SearchBox
-          customName="search"
-          placeHolderText="SEARCH YOUR CITY!"
-          inputType="search"
-          @inputed="handleInput"
-        />
-        {{ list }}
+      <div class="buttons">
+        <button class="yes">हाँ</button>
+        <button class="no">नहीं न</button>
       </div>
-    </section>
+      <div class="eng-btn">
+        <button class="leave">LEAVE IT AS ENGLISH</button>
+      </div>
+    </div>
+    <div class="all">
+      <section class="section-left">
+        <div class="image-area">
+          <img class="placeholder-logo" :src="Logo" alt="logo" />
+        </div>
+      </section>
+      <section class="section-right">
+        <div class="search-box-container">
+          <SearchBox
+            customName="search"
+            placeHolderText="SEARCH YOUR CITY!"
+            inputType="search"
+            @inputed="handleInput"
+          />
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
