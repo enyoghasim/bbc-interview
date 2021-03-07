@@ -9,6 +9,7 @@
 
 .left-column{
   width: 100%;
+  padding:10px;
 }
 .lazyloaded{
   width: inherit;
@@ -16,8 +17,11 @@
 
 .right-column{
   width: 100%;
+  padding:10px;
 }
 
 .inner-col.card{
   margin: 5px;
 }
+
+/* the media query for the layout */
