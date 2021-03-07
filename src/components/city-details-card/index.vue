@@ -19,11 +19,10 @@
             Mumbai to play RCB in IPL opener
           </h3>
         </a>
-        <p
-          class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary gs-u-display-none gs-u-display-block@l"
-        >
-          Two-time defending champions Mumbai Indians will open the 2021 IPL
-          against Royal Challengers Bangalore on 9 April.
+        <p class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary gs-u-display-none gs-u-display-block@l">
+          "A report by Berkeley Earth showed that in China, 
+          1.6 million people die every year from an average exposure of 52 μg/m3 of PM2.5. To kill 1.6 million people would require, assuming 1.36 x9^6 deaths per cigarette, 1.1 trillion cigarettes. Since the population of China is 1.35 billion, that comes to 764 cigarettes every year per person, 
+          or about 2.4 cigarettes per day.",
         </p>
         <div>
           <div

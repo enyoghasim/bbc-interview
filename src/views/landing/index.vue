@@ -11,15 +11,14 @@
       </div>
       <div class="right-column">
         <h2>'India mirror Kohli in their dominance'</h2>
-        <p
-          class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary"
-        >
+        <p class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary">
           Virat Kohli's personality is driving India towards World Test
           Championship glory - and their 'final frontier' in England, writes
           Suresh Menon.
         </p>
       </div>
     </div>
+    <div class="content-paragraph"></div>
 
     <div class="section-mother-bottom">
       <div class="inner-col card">
