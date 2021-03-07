@@ -13,11 +13,13 @@
         @inputed="handleInput"
       />
     </div>
+  <Landing/>
   </div>
 </template>
 
 <script>
 import SearchBox from "./components/search/index";
+import Landing from "./views/landing/index";
 
 import Logo from "./assets/icons/bbc.logo.svg";
 
@@ -27,6 +29,7 @@ export default {
   name: "App",
   components: {
     SearchBox,
+    Landing
   },
   methods: {
     handleInput(event) {

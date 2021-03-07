@@ -11,6 +11,7 @@
   max-height: 1.2rem;
   filter: grayscale(1);
   background: 15px 15px url(/img/icon_search.045ae278.svg) no-repeat;
+  border: solid 2px #e6e6e6;
   background-position: 0px;
   margin: 20px auto;
   font-size: 14px;

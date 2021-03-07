@@ -1,0 +1,36 @@
+.inner-card-holder{
+  width: 100%;
+}
+.section-mother-bottom{
+  display: flex;
+  justify-content: space-between;
+}
+
+.gs-o-bullet__icon {
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+  visibility: visible;
+  display: inline-block;
+}
+
+.gs-u-mt- {
+  margin-top: 4px;
+}
+
+.gs-c-timestamp {
+  vertical-align: middle;
+}
+.nw-o-link-split__text{
+  color: var(--bbc-text-color);
+}
+
+.nw-c-promo-summary, .nw-c-timestamp {
+  color: #5a5a5a;
+}
+.gs-u-box-size, .gs-u-box-size * {
+  box-sizing: border-box;
+}
+.gs-o-bullet {
+  display: inline-block;
+}

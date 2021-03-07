@@ -147,10 +147,12 @@ const convertToArray = (obj) => {
         details = "cigg";
       }
       var objKey = `${regularText}${counter2}_${details}`;
+      
       sampleObject = {
         ...sampleObject,
         [objKey]: obj[objKey],
       };
+
       if (counter1 === 3) {
         outputArray.push(sampleObject);
         sampleObject = {};
@@ -166,4 +168,5 @@ const convertToArray = (obj) => {
   console.log(outputArray);
   //   console.timeEnd("timer")
 };
+
 convertToArray(object);

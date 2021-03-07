@@ -1,0 +1,23 @@
+.landing-container-main{
+  max-width: 1000px;
+}
+
+.top-container-main{
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-column{
+  width: 100%;
+}
+.lazyloaded{
+  width: inherit;
+}
+
+.right-column{
+  width: 100%;
+}
+
+.inner-col.card{
+  margin: 5px;
+}

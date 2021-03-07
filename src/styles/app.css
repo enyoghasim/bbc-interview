@@ -20,5 +20,5 @@ div#app {
   text-align: -webkit-center;
 }
 div.search-box-container {
-  max-width: 20rem;
+  max-width: 50%;
 }
