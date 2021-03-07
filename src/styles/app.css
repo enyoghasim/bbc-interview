@@ -1,13 +1,18 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
 @import "./reset.css";
 @import "./variables.css";
 
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
 .section-left .image-area {
   width: 100%;
   height: 100px;
   background: var(--bbc-ash);
   display: flex;
   justify-content: center;
-  /*background-size: 100px, 130px, auto; */
+  
 }
 .section-left .image-area .placeholder-logo {
   width: 100px;
@@ -22,3 +27,10 @@ div#app {
 div.search-box-container {
   max-width: 50%;
 }
+
+.language{
+  padding: 5px;
+}
+
+
+

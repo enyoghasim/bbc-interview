@@ -26,11 +26,25 @@
 }
 
 .nw-c-promo-summary, .nw-c-timestamp {
-  color: #5a5a5a;
+  color: var(--bbc-summary-text-color);
+  font-size:15px;
 }
 .gs-u-box-size, .gs-u-box-size * {
   box-sizing: border-box;
 }
 .gs-o-bullet {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.gs-u-vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }

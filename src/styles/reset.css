@@ -10,3 +10,6 @@ ul{
 a{
   text-decoration-line: none;
 }
+svg:not(:root) {
+  overflow: hidden;
+}

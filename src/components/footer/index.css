@@ -1,0 +1,39 @@
+.col-main-container-footer{
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 1000px;
+}
+
+.services-icon {
+  height: 26px;
+  width: 24px;
+  fill: #fff;
+}
+
+.col-section-main{
+  background-color:var(--bbc-footer-background-color);
+  padding: 7px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.icon-flex-holder{
+  display: flex;
+}
+
+.title-footer-header{
+  color: var(--bbc-white);
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+}
+
+.gel-brevier {
+  color: var(--bbc-white);
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+}
