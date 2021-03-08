@@ -68,7 +68,8 @@
           </div>
           <div class="city-dit" v-show="detailsOn">
             <div class="lome">
-            <span class="close">x</span></div>
+              <span class="close" @click="closeAll">x</span>
+            </div>
             <table class="tab">
               <tr>
                 <th>CITY NAME</th>
@@ -109,6 +110,10 @@ export default {
     ButtonBase,
   },
   methods: {
+    closeAll() {
+      this.detailsOn = false;
+      this.cityDetails = [{ name: "", aqi: "", cigg: "" }];
+    },
     getCityDetails(text) {
       this.cityDetails = this.list.filter((city) => {
         return city.name.toLowerCase().includes(text.toLowerCase());
