@@ -41,19 +41,21 @@
       <section class="section-right">
         <div class="search-box-container">
           <SearchBox
+          @keyup="moveCursor"
+            :value="inputText"
             customName="search"
             placeHolderText="SEARCH YOUR CITY!"
             inputType="search"
             @inputed="handleInput"
           />
-          <div class="suggestion">
+          <div v-show="isOpen" class="suggestion">
             <li
               class="list-item"
               :class="currentActive === index ? 'active' : ''"
               v-for="(item, index) in search"
               :key="index"
-              :value="item.name"
-              @click="addAndClose"
+              :word="item.name"
+              @click="addAndClose(item.name)"
             >
               {{ item.name }}
             </li>
@@ -85,11 +87,35 @@ export default {
     ButtonBase,
   },
   methods: {
+    moveCursor(event){
+      switch (event.type) {
+        case "UP":
+          if(this.currentActive === 0){
+            this.currentActive === this.list.length - 1;
+          }else{
+            this.currentActive ++;
+          }
+         break;
+         case "DOWN":
+          if(this.currentActive === this.list.length - 1){
+            this.currentActive === 0;
+          }else{
+            this.currentActive --;
+          }
+          break;
+      
+        default:
+          break;
+      }
+
+    },
     handleInput(event) {
+      this.isOpen = true;
       this.inputText = event.newValue;
     },
     addAndClose(event) {
-      this.inputText = event.target.value;
+      this.inputText = event;
+      this.isOpen = false;
     },
     changeLanguage(event) {
       switch (event.Name) {
@@ -106,6 +132,7 @@ export default {
   },
   data() {
     return {
+      isOpen: true,
       currentActive: 0,
       inputText: "",
       language: "ENGLISH",

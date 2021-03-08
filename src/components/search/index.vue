@@ -1,6 +1,7 @@
 <template>
   <div class="search-bar">
     <input
+      :value="value"
       :type="inputType"
       @input="handleSearchInput"
       :name="customName"
@@ -32,6 +33,10 @@ export default {
       type: String,
       default: "",
     },
+    value: {
+      type: String,
+      default: "",
+    },
   },
   methods: {
     handleSearchInput(event) {
@@ -43,9 +48,9 @@ export default {
     handleKeyUp(event) {
       var char = event.which || event.keyCode;
       if (char === 38) {
-        this.$emit("KEYUPP", { type: "UP", name: this.customName });
+        this.$emit("keyup", { type: "UP", name: this.customName });
       } else if (char === 40) {
-        this.$emit("KEYUPP", { type: "DOWN", name: this.customName });
+        this.$emit("keyup", { type: "DOWN", name: this.customName });
       }
     },
   },
