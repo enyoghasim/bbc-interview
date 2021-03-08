@@ -7,13 +7,13 @@ body {
 }
 .section-left .image-area {
   width: 100%;
-  height: 100px;
+  height: 30px;
   background: var(--bbc-ash);
   display: flex;
   justify-content: center;
 }
 .section-left .image-area .placeholder-logo {
-  width: 100px;
+  width: 70px;
   height: auto;
 }
 .ssrcss-47d2zd-StyledIcon {
@@ -90,4 +90,16 @@ td {
   padding: 8px;
   border: 1px solid #726161;
   text-align: center;
+}
+.paragraph {
+  padding: 5px 5px;
+}
+@media only screen and (max-width: 720px) {
+  .search-box-container {
+    max-width: 80% !important;
+  }
+  .city-dit {
+    width: 100% !important;
+    padding: 5px !important;
+  }
 }

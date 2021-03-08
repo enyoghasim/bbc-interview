@@ -38,6 +38,16 @@
           <span>IND</span>
         </ButtonBase>
       </section>
+
+      <Landing
+        :p1="hive.p1"
+        :p2="hive.p2"
+        :p3="hive.p3"
+        :p4="hive.p4"
+        :p5="hive.p5"
+        :p7="hive.p7"
+        :title="data.hero_1_title"
+      />
       <section class="section-right">
         <div class="search-box-container">
           <SearchBox
@@ -84,8 +94,14 @@
             </table>
           </div>
         </div>
+        <div class="fotter-text">
+<p class="paragraph p6">{{hive.p6 }}</p>
+<p class="paragraph p7">{{ hive.p7 }}</p>
+<p class="paragraph p8">{{ hive.p8 }}</p>
+<p class="paragraph p9">{{ hive.p9 }}</p>
+<p class="paragraph p10">{{ hive.p10 }}</p>
+        </div>
       </section>
-      <Landing :title="data.hero_1_title" />
       <Footer />
     </div>
   </div>
@@ -215,11 +231,21 @@ export default {
           : [];
       return maped;
     },
-    hive(){
+    hive() {
       return {
-        placeholder : this.data["compare-tabs_1_title"]
-      }
-    }
+        placeholder: this.data["compare-tabs_1_title"],
+        p1: this.data["p_1_value"],
+        p2: this.data["p_2_value"],
+        p3: this.data["p_3_value"],
+        p4: this.data["p_4_value"],
+        p5: this.data["p_5_value"],
+        p6: this.data["p_6_value"],
+        p7: this.data["p_7_value"],
+        p8: this.data["p_8_value"],
+        p9: this.data["p_9_value"],
+        p10: this.data["p_10_value"],
+      };
+    },
   },
 };
 </script>
