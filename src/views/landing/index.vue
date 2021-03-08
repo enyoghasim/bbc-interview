@@ -2,6 +2,11 @@
   <div class="landing-container-main">
     <div class="top-container-main">
       <div class="left-column">
+        <div class="loader">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
         <img
           src="https://news.files.bbci.co.uk/vj/live/idt-images/image-slider-hello/SMOG_vdyw4.jpg"
           class="lazyloaded"
