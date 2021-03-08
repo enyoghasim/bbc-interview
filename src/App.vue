@@ -62,10 +62,31 @@
             </li>
           </div>
         </div>
+        <div class="cigg">
+          <div v-show="!detailsOn">
+            YOU HAVE NO YET SELECTED ANY CITY
+          </div>
+          <div class="city-dit" v-show="detailsOn">
+            <div class="lome">
+            <span class="close">x</span></div>
+            <table class="tab">
+              <tr>
+                <th>CITY NAME</th>
+                <th>AIR QUALITY</th>
+                <th>NO OF CIGGERATES</th>
+              </tr>
+              <tr>
+                <td>{{ cityDetails[0].name }}</td>
+                <td>{{ cityDetails[0].aqi }}</td>
+                <td>{{ cityDetails[0].cigg }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </section>
+      <Landing />
+      <Footer />
     </div>
-    <Landing />
-    <Footer />
   </div>
 </template>
 
@@ -88,6 +109,12 @@ export default {
     ButtonBase,
   },
   methods: {
+    getCityDetails(text) {
+      this.cityDetails = this.list.filter((city) => {
+        return city.name.toLowerCase().includes(text.toLowerCase());
+      });
+      this.detailsOn = true;
+    },
     moveCursor(event) {
       switch (event.type) {
         case "UP":
@@ -124,6 +151,7 @@ export default {
       this.inputText = event;
       this.isOpen = false;
       this.resetCurrentActive();
+      this.getCityDetails(event);
     },
     changeLanguage(event) {
       switch (event.Name) {
@@ -140,6 +168,8 @@ export default {
   },
   data() {
     return {
+      cityDetails: [{ name: "", aqi: "", cigg: "" }],
+      detailsOn: false,
       isOpen: true,
       currentActive: 0,
       inputText: "",

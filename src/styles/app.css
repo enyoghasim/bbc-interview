@@ -58,3 +58,36 @@ div.suggestion {
 .language {
   padding: 5px;
 }
+.city-dit {
+  width: 50%;
+  background: gainsboro;
+  border-radius: 5px;
+  padding: 20px;
+}
+.city-dit .lome {
+  display: flex;
+  justify-content: flex-end;
+}
+.city-dit .close {
+  cursor: pointer;
+  font-size: 1.7rem;
+  margin-top: -15px;
+  padding-bottom: 15px;
+}
+
+table.tab {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  border: 1px solid #726161;
+  text-align: left;
+  padding: 8px;
+}
+td {
+  padding: 8px;
+  border: 1px solid #726161;
+  text-align: center;
+}
