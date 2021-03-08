@@ -44,7 +44,7 @@
             @keyup="moveCursor"
             :value="inputText"
             customName="search"
-            placeHolderText="SEARCH YOUR CITY!"
+            :placeHolderText="hive.placeholder"
             inputType="search"
             @inputed="handleInput"
           />
@@ -85,7 +85,7 @@
           </div>
         </div>
       </section>
-      <Landing />
+      <Landing :title="data.hero_1_title" />
       <Footer />
     </div>
   </div>
@@ -215,6 +215,11 @@ export default {
           : [];
       return maped;
     },
+    hive(){
+      return {
+        placeholder : this.data["compare-tabs_1_title"]
+      }
+    }
   },
 };
 </script>

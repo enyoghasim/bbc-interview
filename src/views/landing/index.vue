@@ -3,15 +3,17 @@
     <div class="top-container-main">
       <div class="left-column">
         <img
-          src="https://ichef.bbci.co.uk/news/240/cpsprodpb/16C0D/production/_117479139_066071725.jpg"
+          src="https://news.files.bbci.co.uk/vj/live/idt-images/image-slider-hello/SMOG_vdyw4.jpg"
           class="lazyloaded"
           alt="Demonstrators react as tear gas is fired by police during a protest against the military coup in Yangon, Myanmar, 06 March 2021"
           data-src="https://ichef.bbci.co.uk/news/{width}/cpsprodpb/16C0D/production/_117479139_066071725.jpg"
         />
       </div>
       <div class="right-column">
-        <h2>'India mirror Kohli in their dominance'</h2>
-        <p class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary">
+        <h2>'{{title}}'</h2>
+        <p
+          class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary"
+        >
           Virat Kohli's personality is driving India towards World Test
           Championship glory - and their 'final frontier' in England, writes
           Suresh Menon.
@@ -55,6 +57,11 @@ export default {
   components: {
     Card,
   },
-  props: {},
+  props: {
+    title : {
+      type : String,
+      default : ""
+    }
+  },
 };
 </script>
