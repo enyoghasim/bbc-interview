@@ -30,6 +30,8 @@ div.search-box-container {
 
 .language{
   padding: 5px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 

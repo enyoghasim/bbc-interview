@@ -4,6 +4,7 @@
 .section-mother-bottom{
   display: flex;
   justify-content: space-between;
+  margin: 3rem 0px;
 }
 
 .gs-o-bullet__icon {

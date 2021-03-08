@@ -19,16 +19,15 @@
             Mumbai to play RCB in IPL opener
           </h3>
         </a>
-        <p class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary gs-u-display-none gs-u-display-block@l">
-          "A report by Berkeley Earth showed that in China, 
-          1.6 million people die every year from an average exposure of 52 μg/m3 of PM2.5. To kill 1.6 million people would require, assuming 1.36 x9^6 deaths per cigarette, 1.1 trillion cigarettes. Since the population of China is 1.35 billion, that comes to 764 cigarettes every year per person, 
-          or about 2.4 cigarettes per day.",
+        <p
+          class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary gs-u-display-none gs-u-display-block@l"
+        >
+          {{ text | readMore(50, "...") }}
         </p>
         <div>
           <div
             class="gs-o-list-inline gs-o-list-inline--divided gel-brevier gs-u-mt-"
           >
-            
             <div class="nw-c-promo-meta">
               <span
                 class="gs-c-timestamp gs-o-bullet gs-o-bullet- nw-c-timestamp"
@@ -40,8 +39,9 @@
                     ></polygon>
                     <path
                       d="M16,4c6.6,0,12,5.4,12,12c0,6.6-5.4,12-12,12S4,22.6,4,16C4,9.4,9.4,4,16,4 M16,0C7.2,0,0,7.2,0,16c0,8.8,7.2,16,16,16 s16-7.2,16-16C32,7.2,24.8,0,16,0L16,0z"
-                    ></path></svg></span>
-                  <time
+                    ></path></svg
+                ></span>
+                <time
                   class="gs-o-bullet__text date qa-status-date"
                   datetime="2021-03-07T05:24:04.000Z"
                   data-seconds="1615094644"
@@ -56,7 +56,8 @@
               <a
                 href="/news/world/asia"
                 class="gs-c-section-link gs-c-section-link--truncate nw-c-section-link nw-o-link nw-o-link--no-visited-state"
-                aria-label="From Asia">
+                aria-label="From Asia"
+              >
                 <span aria-hidden="true">Asia</span>
               </a>
             </div>
@@ -70,6 +71,13 @@
 <script>
 export default {
   name: "CityDetails",
+  data() {
+    return {
+      text: `"A report by Berkeley Earth showed that in China, 
+          1.6 million people die every year from an average exposure of 52 μg/m3 of PM2.5. To kill 1.6 million people would require, assuming 1.36 x9^6 deaths per cigarette, 1.1 trillion cigarettes. Since the population of China is 1.35 billion, that comes to 764 cigarettes every year per person, 
+          or about 2.4 cigarettes per day."`,
+    };
+  },
   props: {},
 };
 </script>

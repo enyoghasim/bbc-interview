@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="footer-container-main">
     <div class="col-main-container-footer">
       <div class="col-section-main">
         <h2 class="title-footer-header">BBC News Services</h2>
