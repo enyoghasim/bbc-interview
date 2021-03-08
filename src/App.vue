@@ -41,7 +41,7 @@
       <section class="section-right">
         <div class="search-box-container">
           <SearchBox
-          @keyup="moveCursor"
+            @keyup="moveCursor"
             :value="inputText"
             customName="search"
             placeHolderText="SEARCH YOUR CITY!"
@@ -50,6 +50,7 @@
           />
           <div v-show="isOpen" class="suggestion">
             <li
+              :ref="currentActive === index ? 'active' : ''"
               class="list-item"
               :class="currentActive === index ? 'active' : ''"
               v-for="(item, index) in search"
@@ -87,35 +88,42 @@ export default {
     ButtonBase,
   },
   methods: {
-    moveCursor(event){
+    moveCursor(event) {
       switch (event.type) {
         case "UP":
-          if(this.currentActive === 0){
-            this.currentActive === this.list.length - 1;
-          }else{
-            this.currentActive ++;
-          }
-         break;
-         case "DOWN":
-          if(this.currentActive === this.list.length - 1){
-            this.currentActive === 0;
-          }else{
-            this.currentActive --;
+          if (this.currentActive === 0) {
+            this.currentActive = this.search.length - 1;
+          } else {
+            this.currentActive--;
           }
           break;
-      
+        case "DOWN":
+          if (this.currentActive === this.search.length - 1) {
+            this.resetCurrentActive();
+          } else {
+            this.currentActive++;
+          }
+          break;
+        case "ENTER":
+          this.addAndClose(this.search[this.currentActive].name);
+          break;
+
         default:
           break;
       }
-
+    },
+    resetCurrentActive() {
+      this.currentActive = 0;
     },
     handleInput(event) {
       this.isOpen = true;
       this.inputText = event.newValue;
+      this.resetCurrentActive();
     },
     addAndClose(event) {
       this.inputText = event;
       this.isOpen = false;
+      this.resetCurrentActive();
     },
     changeLanguage(event) {
       switch (event.Name) {

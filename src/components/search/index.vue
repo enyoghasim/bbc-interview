@@ -7,7 +7,7 @@
       :name="customName"
       :class="`input-component ${customClass}`"
       :placeholder="placeHolderText"
-      @keyup="handleKeyUp"
+      @keydown="handleKeyUp"
       autocomplete="off"
     />
   </div>
@@ -40,6 +40,7 @@ export default {
   },
   methods: {
     handleSearchInput(event) {
+      event.preventDefault();
       this.$emit("inputed", {
         newValue: event.target.value,
         nameOfInput: this.customName,
@@ -51,6 +52,9 @@ export default {
         this.$emit("keyup", { type: "UP", name: this.customName });
       } else if (char === 40) {
         this.$emit("keyup", { type: "DOWN", name: this.customName });
+      } else if (char === 13) {
+        event.preventDefault();
+        this.$emit("keyup", { type: "ENTER", name: this.customName });
       }
     },
   },
