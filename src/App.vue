@@ -49,9 +49,11 @@
           <div class="suggestion">
             <li
               class="list-item"
-              :class="(currentActive === index ? 'active' : '')"
+              :class="currentActive === index ? 'active' : ''"
               v-for="(item, index) in search"
               :key="index"
+              :value="item.name"
+              @click="addAndClose"
             >
               {{ item.name }}
             </li>
@@ -85,6 +87,9 @@ export default {
   methods: {
     handleInput(event) {
       this.inputText = event.newValue;
+    },
+    addAndClose(event) {
+      this.inputText = event.target.value;
     },
     changeLanguage(event) {
       switch (event.Name) {
