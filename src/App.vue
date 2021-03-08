@@ -7,20 +7,36 @@
         </div>
       </section>
       <section class="language">
-
-        <ButtonBase customTitle="English" customClass="btn-lang">
+        <ButtonBase
+          @changeLang="changeLanguage"
+          customName="english"
+          customTitle="English"
+          customClass="btn-lang"
+        >
           <span class="flag-contain">
-            <img src="https://media.flaticon.com/dist/min/img/flags/en.svg" width="16" height="11">
+            <img
+              src="https://media.flaticon.com/dist/min/img/flags/en.svg"
+              width="16"
+              height="11"
+            />
           </span>
           <span>EN</span>
         </ButtonBase>
-        <ButtonBase customTitle="India" customClass="btn-lang">
+        <ButtonBase
+          @changeLang="changeLanguage"
+          customName="hindi"
+          customTitle="India"
+          customClass="btn-lang"
+        >
           <span class="flag-contain">
-            <img src="https://www.flaticon.com/svg/vstatic/svg/197/197419.svg?token=exp=1615156389~hmac=94fcefe5cec294f1b348f5bb78edf753" width="16" height="11">
+            <img
+              src="https://www.flaticon.com/svg/vstatic/svg/197/197419.svg?token=exp=1615156389~hmac=94fcefe5cec294f1b348f5bb78edf753"
+              width="16"
+              height="11"
+            />
           </span>
           <span>IND</span>
         </ButtonBase>
-
       </section>
       <section class="section-right">
         <div class="search-box-container">
@@ -30,6 +46,16 @@
             inputType="search"
             @inputed="handleInput"
           />
+          <div class="suggestion">
+            <li
+              class="list-item"
+              :class="(currentActive === index ? 'active' : '')"
+              v-for="(item, index) in search"
+              :key="index"
+            >
+              {{ item.name }}
+            </li>
+          </div>
         </div>
       </section>
     </div>
@@ -54,15 +80,28 @@ export default {
     SearchBox,
     Landing,
     Footer,
-    ButtonBase
+    ButtonBase,
   },
   methods: {
     handleInput(event) {
       this.inputText = event.newValue;
     },
+    changeLanguage(event) {
+      switch (event.Name) {
+        case "english":
+          this.language = "ENGLISH";
+          break;
+        case "hindi":
+          this.language = "HINDI";
+          break;
+        default:
+          break;
+      }
+    },
   },
   data() {
     return {
+      currentActive: 0,
       inputText: "",
       language: "ENGLISH",
       Logo,
@@ -89,6 +128,17 @@ export default {
           : EnglishJsonData;
 
       return dataFunction;
+    },
+    search() {
+      var maped =
+        this.inputText.length > 0
+          ? this.list.filter((e) => {
+              return e.name
+                .toLowerCase()
+                .includes(this.inputText.toLowerCase());
+            })
+          : [];
+      return maped;
     },
   },
 };

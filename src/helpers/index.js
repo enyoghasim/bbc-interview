@@ -20,7 +20,7 @@ const convertToArray = (obj) => {
       let objKey = `${regularText}${counter2}_${details}`;
       sampleObject = {
         ...sampleObject,
-        [objKey]: obj[objKey],
+        [details]: obj[objKey],
       };
       if (counter1 === 3) {
         outputArray.push(sampleObject);

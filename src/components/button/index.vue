@@ -1,5 +1,5 @@
 <template>
-  <button :title="customTitle" :class="customClass">
+  <button :name="customName" @click="changeLang" :title="customTitle" :class="customClass">
     <slot></slot>
   </button>
 </template>
@@ -8,20 +8,29 @@
 @import "./index.css";
 </style>
 
-
 <script>
 export default {
   name: "btnComponent",
   components: {},
   props: {
-    customClass:{
-      type:[String, Array],
-      default:""
+    customClass: {
+      type: [String, Array],
+      default: "",
     },
-    customTitle:{
-      type:[String, Array],
-      default:"click btn"
-    }
+    customTitle: {
+      type: [String, Array],
+      default: "click btn",
+    },
+    customName: {
+      type: String,
+      required: true,
+      default: "",
+    },
+  },
+  methods: {
+    changeLang() {
+      this.$emit("changeLang", { Name: this.customName });
+    },
   },
 };
 </script>

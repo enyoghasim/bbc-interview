@@ -147,7 +147,7 @@ const convertToArray = (obj) => {
         details = "cigg";
       }
       var objKey = `${regularText}${counter2}_${details}`;
-      
+
       sampleObject = {
         ...sampleObject,
         [objKey]: obj[objKey],

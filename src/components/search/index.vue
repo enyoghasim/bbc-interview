@@ -6,7 +6,8 @@
       :name="customName"
       :class="`input-component ${customClass}`"
       :placeholder="placeHolderText"
-      @keyup="handleKeyup"
+      @keyup="handleKeyUp"
+      autocomplete="off"
     />
   </div>
 </template>
