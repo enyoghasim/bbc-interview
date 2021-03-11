@@ -7,6 +7,12 @@
   justify-content: space-between;
 }
 
+.section-mother-bottom{
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 0px;
+}
+
 .left-column{
   width: 100%;
   padding:10px;
@@ -14,6 +20,7 @@
 .lazyloaded{
   width: inherit;
 }
+
 
 .right-column{
   width: 100%;
@@ -25,3 +32,19 @@
 }
 
 /* the media query for the layout */
+@media only screen and (max-width: 768px) {
+
+  .top-container-main {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+  /* For mobile phones: */
+  .section-mother-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 3rem 0px;
+    padding: 0px 3rem;
+  }
+}

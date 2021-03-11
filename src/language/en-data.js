@@ -1,4 +1,4 @@
-const object = {
+export const engObject = {
   hero_1_image:
     "https://news.files.bbci.co.uk/vj/live/idt-images/image-slider-hello/SMOG_vdyw4.jpg",
   hero_1_title: "Delhi smog: How many cigarettes did you smoke this week?",
@@ -126,47 +126,3 @@ const object = {
   p_10_value:
     "We took the PM 2.5 data of 33 cities in India every day for one week. We calculated the mean of 6 days PM 2.5 data of each city and divided it by 21.6 μg/m3 to get the number of cigarettes. It is also imperative to say the numbers shown is the assumption that you ideally spent most of your time breathing air from outside.",
 };
-
-const convertToArray = (obj) => {
-  // console.time("timer")
-  var counter1 = 1;
-  var counter2 = 1;
-  var key = "";
-  var outputArray = [];
-  var sampleObject = {};
-  var details = "";
-  var regularText = "compare-tabs_1_city_";
-
-  for (key in obj) {
-    if (key.includes(regularText)) {
-      if (counter1 === 1) {
-        details = "name";
-      } else if (counter1 === 2) {
-        details = "aqi";
-      } else if (counter1 === 3) {
-        details = "cigg";
-      }
-      var objKey = `${regularText}${counter2}_${details}`;
-      
-      sampleObject = {
-        ...sampleObject,
-        [objKey]: obj[objKey],
-      };
-
-      if (counter1 === 3) {
-        outputArray.push(sampleObject);
-        sampleObject = {};
-        counter1 = 1;
-        counter2++;
-      } else {
-        counter1++;
-      }
-    }
-  }
-  //   uncomment the return statement if you want to return to a variable
-  //   return outputArray;
-  console.log(outputArray);
-  //   console.timeEnd("timer")
-};
-
-convertToArray(object);

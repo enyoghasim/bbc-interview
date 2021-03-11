@@ -1,5 +1,11 @@
 <template>
-  <button :title="customTitle" :class="customClass">
+  <button
+    :title="customTitle"
+    :type="buttonType"
+    :name="customName"
+    @click="handleAction"
+    :class="customClass"
+  >
     <slot></slot>
   </button>
 </template>
@@ -10,18 +16,32 @@
 
 
 <script>
+
 export default {
   name: "btnComponent",
   components: {},
   props: {
-    customClass:{
-      type:[String, Array],
-      default:""
+    customClass: {
+      type: [String, Array],
+      default: "",
     },
-    customTitle:{
-      type:[String, Array],
-      default:"click btn"
-    }
+    customName: {
+      type: [String, Array],
+      default: "btn",
+    },
+    customTitle: {
+      type: [String, Array],
+      default: "click btn",
+    },
+    buttonType: {
+      type: String,
+      default: "button",
+    },
+  },
+  methods: {
+    handleAction() {
+      this.$emit("btnClicked",this.customName);
+    },
   },
 };
 </script>
