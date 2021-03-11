@@ -11,7 +11,6 @@
           @changeLang="changeLanguage"
           customName="english"
           customTitle="English"
-          customClass="btn-lang"
         >
           <span class="flag-contain">
             <img
@@ -73,9 +72,7 @@
           </div>
         </div>
         <div class="cigg">
-          <div v-show="!detailsOn">
-            YOU HAVE NO YET SELECTED ANY CITY
-          </div>
+          <div v-show="!detailsOn">YOU HAVE NO YET SELECTED ANY CITY</div>
           <div class="city-dit" v-show="detailsOn">
             <div class="lome">
               <span class="close" @click="closeAll">x</span>
@@ -95,11 +92,11 @@
           </div>
         </div>
         <div class="fotter-text">
-<p class="paragraph p6">{{hive.p6 }}</p>
-<p class="paragraph p7">{{ hive.p7 }}</p>
-<p class="paragraph p8">{{ hive.p8 }}</p>
-<p class="paragraph p9">{{ hive.p9 }}</p>
-<p class="paragraph p10">{{ hive.p10 }}</p>
+          <p class="paragraph p6">{{ hive.p6 }}</p>
+          <p class="paragraph p7">{{ hive.p7 }}</p>
+          <p class="paragraph p8">{{ hive.p8 }}</p>
+          <p class="paragraph p9">{{ hive.p9 }}</p>
+          <p class="paragraph p10">{{ hive.p10 }}</p>
         </div>
       </section>
       <Footer />
@@ -109,18 +106,16 @@
 
 <script>
 import convertToArray from "./helpers/index.js";
-import SearchBox from "./components/search/index";
 import Landing from "./views/landing/index";
 import Footer from "./components/footer/index";
 import ButtonBase from "./components/button/index";
 import Logo from "./assets/icons/bbc.logo.svg";
-import EnglishJsonData from "./data/english.json";
+import { EnglishJsonData } from "./language/en-data.js";
 import HindiJsonData from "./data/hindi.json";
 
 export default {
   name: "App",
   components: {
-    SearchBox,
     Landing,
     Footer,
     ButtonBase,
@@ -186,6 +181,20 @@ export default {
           break;
       }
     },
+    setEvent(lang) {
+      this.eventLang = lang;
+      console.log(this.eventLang);
+      switch (this.eventLang) {
+        case lang.eng:
+          this.int8n = EnglishJsonData;
+          console.log("english here", EnglishJsonData);
+          break;
+        case lang.ind:
+          this.int8n = HindiJsonData;
+          console.log(JSON.stringify(this.int8n));
+          break;
+      }
+    },
   },
   data() {
     return {
@@ -194,6 +203,12 @@ export default {
       isOpen: true,
       currentActive: 0,
       inputText: "",
+      int8n: "",
+      eventLang: "",
+      lang: {
+        eng: "ENG",
+        ind: "IND",
+      },
       language: "ENGLISH",
       Logo,
       EnglishJsonData,

@@ -22,7 +22,11 @@
         <p
           class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary gs-u-display-none gs-u-display-block@l"
         >
+<<<<<<< HEAD
           "{{ p7 }}",
+=======
+          {{ text | readMore(50, "...") }}
+>>>>>>> d787270fe855e8cc4a24637dfc84de2db7224d1e
         </p>
         <div>
           <div
@@ -71,12 +75,23 @@
 <script>
 export default {
   name: "CityDetails",
+<<<<<<< HEAD
   props: {
     p7: {
       type: String,
       default: "",
     },
   },
+=======
+  data() {
+    return {
+      text: `"A report by Berkeley Earth showed that in China, 
+          1.6 million people die every year from an average exposure of 52 μg/m3 of PM2.5. To kill 1.6 million people would require, assuming 1.36 x9^6 deaths per cigarette, 1.1 trillion cigarettes. Since the population of China is 1.35 billion, that comes to 764 cigarettes every year per person, 
+          or about 2.4 cigarettes per day."`,
+    };
+  },
+  props: {},
+>>>>>>> d787270fe855e8cc4a24637dfc84de2db7224d1e
 };
 </script>
 

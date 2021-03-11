@@ -9,6 +9,7 @@ ul{
 }
 a{
   text-decoration-line: none;
+  color: var(--bbc-summary-text-color);
 }
 svg:not(:root) {
   overflow: hidden;

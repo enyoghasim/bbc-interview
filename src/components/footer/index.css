@@ -1,3 +1,8 @@
+.footer-container-main{
+  background-color:var(--bbc-footer-background-color);
+  padding:1rem;
+}
+
 .col-main-container-footer{
   display: flex;
   text-align: left;
@@ -13,7 +18,6 @@
 }
 
 .col-section-main{
-  background-color:var(--bbc-footer-background-color);
   padding: 7px;
   width: 100%;
   display: flex;
@@ -32,15 +36,20 @@
 
 .gel-brevier {
   color: var(--bbc-white);
+  font-size: 15px;
   font-weight: bold;
   text-decoration: none;
   display: flex;
   justify-content: space-between;
 }
-@media only screen and (max-width: 720px) {
-  .icon-flex-holder{
-    flex-wrap: wrap;
+
+
+
+/* mobile view for footer */
+@media only screen and (max-width: 768px) {
+  .icon-flex-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
-
-

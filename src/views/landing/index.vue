@@ -2,25 +2,41 @@
   <div class="landing-container-main">
     <div class="top-container-main">
       <div class="left-column">
-        <div class="loader">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <img
-          src="https://news.files.bbci.co.uk/vj/live/idt-images/image-slider-hello/SMOG_vdyw4.jpg"
-          class="lazyloaded"
-          alt="Demonstrators react as tear gas is fired by police during a protest against the military coup in Yangon, Myanmar, 06 March 2021"
-          data-src="https://ichef.bbci.co.uk/news/{width}/cpsprodpb/16C0D/production/_117479139_066071725.jpg"
-        />
+        <picture class="lazyloaded">
+          <source
+            media="(min-width:650px)"
+            srcset="
+              https://ichef.bbci.co.uk/news/240/cpsprodpb/16C0D/production/_117479139_066071725.jpg
+            "
+          />
+          <source
+            media="(min-width:465px)"
+            srcset="
+              https://ichef.bbci.co.uk/news/240/cpsprodpb/16C0D/production/_117479139_066071725.jpg
+            "
+          />
+          <img
+            src="https://ichef.bbci.co.uk/news/240/cpsprodpb/16C0D/production/_117479139_066071725.jpg"
+            alt="Demonstrators react as tear gas is fired by police during a protest against the military coup in Yangon, Myanmar, 06 March 2021"
+            class="lazyloaded"
+          />
+        </picture>
       </div>
       <div class="right-column">
-        <h2>'{{ title }}'</h2>
+        <h2>'India mirror Kohli in their dominance'</h2>
         <p
           class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary"
         >
-          {{ p1 }}
+          Virat Kohli's personality is driving India towards World Test
+          Championship glory - and their 'final frontier' in England, writes
+          Suresh Menon.
         </p>
+        <SearchBox
+          customName="search"
+          placeHolderText="SEARCH YOUR CITY!"
+          inputType="search"
+          @inputed="handleInput"
+        />
       </div>
     </div>
     <div class="content-paragraph">
