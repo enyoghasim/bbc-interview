@@ -25,13 +25,9 @@ div#app {
 div.search-box-container {
   position: relative;
   max-width: 50%;
-   z-index: 99;
-  top: 100%;
   left: 0;
   right: 0;
-  background: #e2dede;
   border-radius: 5px;
-  margin-top: -18px;
 }
 
 .language{
@@ -41,7 +37,11 @@ div.search-box-container {
 }
 
 
- 
+ .suggestion{
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+ }
 
 .list-item {
   border-radius: 5px;

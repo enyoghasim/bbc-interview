@@ -11,6 +11,7 @@
           @changeLang="changeLanguage"
           customName="english"
           customTitle="English"
+          customClass="btn-lang"
         >
           <span class="flag-contain">
             <img
@@ -38,15 +39,7 @@
         </ButtonBase>
       </section>
 
-      <Landing
-        :p1="hive.p1"
-        :p2="hive.p2"
-        :p3="hive.p3"
-        :p4="hive.p4"
-        :p5="hive.p5"
-        :p7="hive.p7"
-        :title="data.hero_1_title"
-      />
+      <Landing :data="hive" />
       <section class="section-right">
         <div class="search-box-container">
           <SearchBox
@@ -56,20 +49,11 @@
             :placeHolderText="hive.placeholder"
             inputType="search"
             @inputed="handleInput"
+            :search="search"
+            :isOpen="isOpen"
+            :currentActive="currentActive"
+            @addAndClose="addClose"
           />
-          <div v-show="isOpen" class="suggestion">
-            <li
-              :ref="currentActive === index ? 'active' : ''"
-              class="list-item"
-              :class="currentActive === index ? 'active' : ''"
-              v-for="(item, index) in search"
-              :key="index"
-              :word="item.name"
-              @click="addAndClose(item.name)"
-            >
-              {{ item.name }}
-            </li>
-          </div>
         </div>
         <div class="cigg">
           <div v-show="!detailsOn">YOU HAVE NO YET SELECTED ANY CITY</div>
@@ -105,13 +89,14 @@
 </template>
 
 <script>
-import convertToArray from "./helpers/index.js";
+import { convertToArray, getParagraphs } from "./helpers/index.js";
 import Landing from "./views/landing/index";
 import Footer from "./components/footer/index";
 import ButtonBase from "./components/button/index";
 import Logo from "./assets/icons/bbc.logo.svg";
-import { EnglishJsonData } from "./language/en-data.js";
+import EnglishJsonData from "./data/english.json";
 import HindiJsonData from "./data/hindi.json";
+import SearchBox from "./components/search/index";
 
 export default {
   name: "App",
@@ -119,8 +104,12 @@ export default {
     Landing,
     Footer,
     ButtonBase,
+    SearchBox,
   },
   methods: {
+    addClose(e) {
+      this.addAndClose(e);
+    },
     closeAll() {
       this.detailsOn = false;
       this.cityDetails = [{ name: "", aqi: "", cigg: "" }];
@@ -181,20 +170,6 @@ export default {
           break;
       }
     },
-    setEvent(lang) {
-      this.eventLang = lang;
-      console.log(this.eventLang);
-      switch (this.eventLang) {
-        case lang.eng:
-          this.int8n = EnglishJsonData;
-          console.log("english here", EnglishJsonData);
-          break;
-        case lang.ind:
-          this.int8n = HindiJsonData;
-          console.log(JSON.stringify(this.int8n));
-          break;
-      }
-    },
   },
   data() {
     return {
@@ -203,12 +178,6 @@ export default {
       isOpen: true,
       currentActive: 0,
       inputText: "",
-      int8n: "",
-      eventLang: "",
-      lang: {
-        eng: "ENG",
-        ind: "IND",
-      },
       language: "ENGLISH",
       Logo,
       EnglishJsonData,
@@ -247,18 +216,16 @@ export default {
       return maped;
     },
     hive() {
+      var paragraphs = getParagraphs(this.data);
       return {
+        ...paragraphs,
+        image: this.data["hero_1_image"],
         placeholder: this.data["compare-tabs_1_title"],
-        p1: this.data["p_1_value"],
-        p2: this.data["p_2_value"],
-        p3: this.data["p_3_value"],
-        p4: this.data["p_4_value"],
-        p5: this.data["p_5_value"],
-        p6: this.data["p_6_value"],
-        p7: this.data["p_7_value"],
-        p8: this.data["p_8_value"],
-        p9: this.data["p_9_value"],
-        p10: this.data["p_10_value"],
+        title: this.data["hero_1_title"],
+        author: this.data["article-info_1_byline"],
+        createdOn: this.data["article-info_1_date"],
+        country: this.data["article-info_1_category"],
+        articleUrl: this.data["article-info_1_category_url"],
       };
     },
   },

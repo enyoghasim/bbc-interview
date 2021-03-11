@@ -1,16 +1,33 @@
 <template>
-  <div class="search-bar">
-    <input
-      :value="value"
-      :type="inputType"
-      @input="handleSearchInput"
-      :name="customName"
-      :class="`input-component ${customClass}`"
-      :placeholder="placeHolderText"
-      @keydown="handleKeyUp"
-      autocomplete="off"
-    />
-  </div>
+  <section>
+    <div class="search-bar">
+      <input
+        :value="value"
+        :type="inputType"
+        @input="handleSearchInput"
+        :name="customName"
+        :class="`input-component ${customClass}`"
+        :placeholder="placeHolderText"
+        @keydown="handleKeyUp"
+        autocomplete="off"
+      />
+    </div>
+    <div class="suggestions">
+      <div v-show="isOpen && inputType === 'search'" class="suggestion">
+        <li
+          :ref="currentActive === index ? 'active' : ''"
+          class="list-item"
+          :class="currentActive === index ? 'active' : ''"
+          v-for="(item, index) in search"
+          :key="index"
+          :word="item.name"
+          @click="$emit('addAndClose', item.name)"
+        >
+          {{ item.name }}
+        </li>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -29,6 +46,10 @@ export default {
       type: String,
       required: true,
     },
+    currentActive: {
+      type: Number,
+      default: 0,
+    },
     customClass: {
       type: String,
       default: "",
@@ -36,6 +57,14 @@ export default {
     value: {
       type: String,
       default: "",
+    },
+    isOpen: {
+      type: Boolean,
+      default: true,
+    },
+    search: {
+      type: Array,
+      default: () => [],
     },
   },
   methods: {
