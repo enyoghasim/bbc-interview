@@ -1,3 +1,5 @@
+// import jsonData from "../data/english.json";
+
 const convertToArray = (obj) => {
   // console.time("timer")
   let counter1 = 1;
@@ -33,6 +35,10 @@ const convertToArray = (obj) => {
     }
   }
   return outputArray;
+  // console.log(outputArray)
   //   console.timeEnd("timer")
 };
 module.exports = convertToArray;
+
+
+// convertToArray(jsonData);
