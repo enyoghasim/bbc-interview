@@ -1,11 +1,16 @@
-import convertToArray from "../../index"
+import { convertToArray, getParagraphs } from "../../index";
 
 import jsonData from "../../../data/english.json";
 
-import expected from "./data"
+import { expected1, expected2 } from "./data";
 
-describe("TESTING ALGORITHM", () => {
-    test("TESTING IF WE RECIEVED EXPECTED DATA", () => {
-        expect(convertToArray(jsonData)).toEqual(expected)
-    })
+describe("TESTING FIRST ALGORITHM", () => {
+  test("TESTING IF WE RECIEVED EXPECTED DATA", () => {
+    expect(convertToArray(jsonData)).toEqual(expected1);
+  });
+});
+describe("TESTING SECOND ALGORITHM", () => {
+  test("TESTING IF WE RECIEVED EXPECTED DATA", () => {
+    expect(getParagraphs(jsonData)).toMatchObject(expected2);
+  });
 });

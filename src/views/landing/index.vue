@@ -13,7 +13,9 @@
         </picture>
       </div>
       <div class="right-column">
-        <h2>'{{ data.title }}'</h2>
+        <a href="http://www.bbc.co.uk/news/world/asia/india" target="_blank">
+          <h2>'{{ data.title }}'</h2>
+        </a>
         <p
           class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary"
         >
@@ -26,13 +28,9 @@
       <p class="paragraph p3">{{ data.p3 }}</p>
       <p class="paragraph p4">{{ data.p4 }}</p>
       <p class="paragraph p5">{{ data.p5 }}</p>
+      <h4 class="note">*{{ data.compareTabs }}</h4>
     </div>
-
-    <!-- <div class="section-mother-bottom">
-      <div class="inner-col card">
-        <Card :p7="p7" />
-      </div>
-    </div> -->
+    <slot></slot>
   </div>
 </template>
 
@@ -41,13 +39,9 @@
 </style>
 
 <script>
-// import Card from "../../components/city-details-card/index";
-
 export default {
   name: "Landing-Content",
-  components: {
-    // Card,
-  },
+
   props: {
     title: {
       type: String,

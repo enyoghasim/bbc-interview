@@ -30,25 +30,42 @@ div.search-box-container {
   border-radius: 5px;
 }
 
-.language{
+.language {
   padding: 5px;
   display: flex;
   justify-content: flex-end;
 }
 
+.suggestion {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  overflow-y: auto;
+  height: 350px;
+  border-radius: 5px;
+}
 
- .suggestion{
-    position: absolute;
-    z-index: 999;
-    width: 100%;
- }
+.suggestion::-webkit-scrollbar {
+  display: none;
+}
+
+.suggestion::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.suggestion::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.suggestion::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 .list-item {
-  border-radius: 5px;
   padding: 10px;
   cursor: pointer;
-  background-color: #e2dede;
-  border-bottom: 1px solid #d4d4d4;
+  background-color: #fbf8f8;
+  border-bottom: 1px solid #e6e6e6;
   list-style: none;
 }
 .list-item:hover {
@@ -65,9 +82,6 @@ div.search-box-container {
 }
 .city-dit {
   width: 50%;
-  background: gainsboro;
-  border-radius: 5px;
-  padding: 20px;
 }
 .city-dit .lome {
   display: flex;
@@ -84,22 +98,22 @@ table.tab {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  border:0px solid transparent;
+  border: 0px solid transparent;
 }
 
 th {
-border-bottom:2px solid black;
+  border-bottom: 2px solid black;
   text-align: center;
   padding: 8px;
-  background-color:steelblue;
-  border-right:1px solid lightsteelblue;
+  background-color: steelblue;
+  border-right: 1px solid lightsteelblue;
 }
 td {
   padding: 8px;
   text-align: center;
-  background:gray;
-  border-right:1px inset lightgray;
-  color:white;
+  background: gray;
+  border-right: 1px inset lightgray;
+  color: white;
 }
 .paragraph {
   padding: 5px 5px;

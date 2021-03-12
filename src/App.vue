@@ -39,50 +39,37 @@
         </ButtonBase>
       </section>
 
-      <Landing :data="hive" />
-      <section class="section-right">
-        <div class="search-box-container">
-          <SearchBox
-            @keyup="moveCursor"
-            :value="inputText"
-            customName="search"
-            :placeHolderText="hive.placeholder"
-            inputType="search"
-            @inputed="handleInput"
-            :search="search"
-            :isOpen="isOpen"
-            :currentActive="currentActive"
-            @addAndClose="addClose"
-          />
-        </div>
-        <div class="cigg">
-          <div v-show="!detailsOn">YOU HAVE NO YET SELECTED ANY CITY</div>
-          <div class="city-dit" v-show="detailsOn">
-            <div class="lome">
-              <span class="close" @click="closeAll">x</span>
-            </div>
-            <table class="tab">
-              <tr>
-                <th>CITY NAME</th>
-                <th>AIR QUALITY</th>
-                <th>NO OF CIGGERATES</th>
-              </tr>
-              <tr>
-                <td>{{ cityDetails[0].name }}</td>
-                <td>{{ cityDetails[0].aqi }}</td>
-                <td>{{ cityDetails[0].cigg }}</td>
-              </tr>
-            </table>
+      <Landing :data="hive">
+        <section class="section-right">
+          <div class="search-box-container">
+            <SearchBox
+              @keyup="moveCursor"
+              :value="inputText"
+              customName="search"
+              :placeHolderText="hive.placeholder"
+              inputType="search"
+              @inputed="handleInput"
+              :search="search"
+              :isOpen="isOpen"
+              :currentActive="currentActive"
+              @addAndClose="addClose"
+            />
           </div>
-        </div>
-        <div class="fotter-text">
-          <p class="paragraph p6">{{ hive.p6 }}</p>
-          <p class="paragraph p7">{{ hive.p7 }}</p>
-          <p class="paragraph p8">{{ hive.p8 }}</p>
-          <p class="paragraph p9">{{ hive.p9 }}</p>
-          <p class="paragraph p10">{{ hive.p10 }}</p>
-        </div>
-      </section>
+          <div class="cigg">
+            <div v-show="!detailsOn">{{ warning }}</div>
+            <div class="city-dit" v-show="detailsOn">
+              <CityDetails :cityDetails="cityDetails" @closeAll="closeAll" />
+            </div>
+          </div>
+          <div class="fotter-text">
+            <p class="paragraph p6">{{ hive.p6 }}</p>
+            <p class="paragraph p7">{{ hive.p7 }}</p>
+            <p class="paragraph p8">{{ hive.p8 }}</p>
+            <p class="paragraph p9">{{ hive.p9 }}</p>
+            <p class="paragraph p10">{{ hive.p10 }}</p>
+          </div>
+        </section>
+      </Landing>
       <Footer />
     </div>
   </div>
@@ -97,6 +84,7 @@ import Logo from "./assets/icons/bbc.logo.svg";
 import EnglishJsonData from "./data/english.json";
 import HindiJsonData from "./data/hindi.json";
 import SearchBox from "./components/search/index";
+import CityDetails from "./components/city-details-card/index";
 
 export default {
   name: "App",
@@ -105,8 +93,16 @@ export default {
     Footer,
     ButtonBase,
     SearchBox,
+    CityDetails,
   },
   methods: {
+    isEnglish() {
+      if (this.language === "ENGLISH") {
+        return true;
+      } else {
+        return false;
+      }
+    },
     addClose(e) {
       this.addAndClose(e);
     },
@@ -186,23 +182,26 @@ export default {
   },
   computed: {
     list() {
-      var listFunction =
-        this.language === "ENGLISH"
-          ? convertToArray(EnglishJsonData)
-          : this.language === "HINDI"
-          ? convertToArray(HindiJsonData)
-          : convertToArray(EnglishJsonData);
+      var listFunction = this.isEnglish()
+        ? convertToArray(EnglishJsonData)
+        : !this.isEnglish()
+        ? convertToArray(HindiJsonData)
+        : convertToArray(EnglishJsonData);
       return listFunction;
     },
     data() {
-      var dataFunction =
-        this.language === "ENGLISH"
-          ? EnglishJsonData
-          : this.language === "HINDI"
-          ? HindiJsonData
-          : EnglishJsonData;
+      var dataFunction = this.isEnglish()
+        ? EnglishJsonData
+        : !this.isEnglish()
+        ? HindiJsonData
+        : EnglishJsonData;
 
       return dataFunction;
+    },
+    warning() {
+      return this.isEnglish()
+        ? "YOU HAVE NOT YET SELECTED ANY CITY"
+        : "आपने किसी भी शहर का चयन नहीं किया है";
     },
     search() {
       var maped =
@@ -219,6 +218,7 @@ export default {
       var paragraphs = getParagraphs(this.data);
       return {
         ...paragraphs,
+        compareTabs: this.data["compare-tabs_1_method"],
         image: this.data["hero_1_image"],
         placeholder: this.data["compare-tabs_1_title"],
         title: this.data["hero_1_title"],

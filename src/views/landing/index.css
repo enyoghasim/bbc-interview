@@ -53,6 +53,9 @@
 .paragraph {
   padding: 5px 5px;
 }
+.note {
+  padding: 20px;
+}
 /* the media query for the layout */
 @media only screen and (max-width: 768px) {
   .top-container-main {

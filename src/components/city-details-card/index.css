@@ -1,47 +1,58 @@
-.inner-card-holder{
+.card-wrapper {
+  width: 100%;
+  display: inline-block;
+  margin-top: 1rem;
+  text-align: left;
+  padding: 2rem 2rem 0.5rem 2rem;
+  margin-bottom: 30px;
+  position: relative;
+  background: var(--bbc-white);
+  border-radius: 4px;
+  box-shadow: 0px 5px 25px rgba(31, 32, 65, 0.15);
+}
+.inner_left_section {
   width: 100%;
 }
-
-
-.gs-o-bullet__icon {
-  height: 1em;
-  width: 1em;
-  vertical-align: middle;
-  visibility: visible;
-  display: inline-block;
+.tag {
+  display: flex;
+  justify-content: flex-end;
+}
+.tag span {
+  color: var(--purple);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
-.gs-u-mt- {
-  margin-top: 4px;
-}
-
-.gs-c-timestamp {
-  vertical-align: middle;
-}
-.nw-o-link-split__text{
-  color: var(--bbc-text-color);
-}
-
-.nw-c-promo-summary, .nw-c-timestamp {
-  color: var(--bbc-summary-text-color);
-  font-size:15px;
-}
-.gs-u-box-size, .gs-u-box-size * {
-  box-sizing: border-box;
-}
-.gs-o-bullet {
+.cigg-group {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+}
+.cigg-group .image {
+  width: 20px;
+  height: 4rem;
+}
+.card__inner_catalog_top {
+  padding-bottom: 1.5rem;
+  display: flex;
 }
 
-.gs-u-vh {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
+.title_card {
+  color: #303030;
+  line-height: 1;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+.sub_title_header {
+  color: rgba(0, 0, 0, 0.25);
+  font-weight: normal;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+  font-size: 0.8125rem;
+  text-transform: capitalize;
+  margin-top: 0;
 }

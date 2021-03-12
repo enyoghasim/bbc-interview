@@ -14,7 +14,7 @@
     </div>
     <div class="suggestions">
       <div v-show="isOpen && inputType === 'search'" class="suggestion">
-        <li
+        <div
           :ref="currentActive === index ? 'active' : ''"
           class="list-item"
           :class="currentActive === index ? 'active' : ''"
@@ -24,7 +24,7 @@
           @click="$emit('addAndClose', item.name)"
         >
           {{ item.name }}
-        </li>
+        </div>
       </div>
     </div>
   </section>
