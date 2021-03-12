@@ -93,27 +93,8 @@ div.search-box-container {
   margin-top: -15px;
   padding-bottom: 15px;
 }
-
-table.tab {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  border: 0px solid transparent;
-}
-
-th {
-  border-bottom: 2px solid black;
-  text-align: center;
-  padding: 8px;
-  background-color: steelblue;
-  border-right: 1px solid lightsteelblue;
-}
-td {
-  padding: 8px;
-  text-align: center;
-  background: gray;
-  border-right: 1px inset lightgray;
-  color: white;
+p {
+  font-size: 15px;
 }
 .paragraph {
   padding: 5px 5px;
