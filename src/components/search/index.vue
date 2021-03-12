@@ -1,14 +1,33 @@
 <template>
-  <div class="search-bar">
-    <input
-      :type="inputType"
-      @input="handleSearchInput"
-      :name="customName"
-      :class="`input-component ${customClass}`"
-      :placeholder="placeHolderText"
-      @keyup="handleKeyup"
-    />
-  </div>
+  <section>
+    <div class="search-bar">
+      <input
+        :value="value"
+        :type="inputType"
+        @input="handleSearchInput"
+        :name="customName"
+        :class="`input-component ${customClass}`"
+        :placeholder="placeHolderText"
+        @keydown="handleKeyUp"
+        autocomplete="off"
+      />
+    </div>
+    <div class="suggestions">
+      <div v-show="isOpen && inputType === 'search'" class="suggestion">
+        <li
+          :ref="currentActive === index ? 'active' : ''"
+          class="list-item"
+          :class="currentActive === index ? 'active' : ''"
+          v-for="(item, index) in search"
+          :key="index"
+          :word="item.name"
+          @click="$emit('addAndClose', item.name)"
+        >
+          {{ item.name }}
+        </li>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -27,13 +46,30 @@ export default {
       type: String,
       required: true,
     },
+    currentActive: {
+      type: Number,
+      default: 0,
+    },
     customClass: {
       type: String,
       default: "",
     },
+    value: {
+      type: String,
+      default: "",
+    },
+    isOpen: {
+      type: Boolean,
+      default: true,
+    },
+    search: {
+      type: Array,
+      default: () => [],
+    },
   },
   methods: {
     handleSearchInput(event) {
+      event.preventDefault();
       this.$emit("inputed", {
         newValue: event.target.value,
         nameOfInput: this.customName,
@@ -42,9 +78,12 @@ export default {
     handleKeyUp(event) {
       var char = event.which || event.keyCode;
       if (char === 38) {
-        this.$emit("KEYUPP", { type: "UP", name: this.customName });
+        this.$emit("keyup", { type: "UP", name: this.customName });
       } else if (char === 40) {
-        this.$emit("KEYUPP", { type: "DOWN", name: this.customName });
+        this.$emit("keyup", { type: "DOWN", name: this.customName });
+      } else if (char === 13) {
+        event.preventDefault();
+        this.$emit("keyup", { type: "ENTER", name: this.customName });
       }
     },
   },

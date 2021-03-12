@@ -22,7 +22,11 @@
         <p
           class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary gs-u-display-none gs-u-display-block@l"
         >
+<<<<<<< HEAD
+          "{{ p7 }}",
+=======
           {{ text | readMore(50, "...") }}
+>>>>>>> d787270fe855e8cc4a24637dfc84de2db7224d1e
         </p>
         <div>
           <div
@@ -71,6 +75,14 @@
 <script>
 export default {
   name: "CityDetails",
+<<<<<<< HEAD
+  props: {
+    p7: {
+      type: String,
+      default: "",
+    },
+  },
+=======
   data() {
     return {
       text: `"A report by Berkeley Earth showed that in China, 
@@ -79,6 +91,7 @@ export default {
     };
   },
   props: {},
+>>>>>>> d787270fe855e8cc4a24637dfc84de2db7224d1e
 };
 </script>
 

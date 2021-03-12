@@ -1,9 +1,8 @@
 <template>
   <button
-    :title="customTitle"
-    :type="buttonType"
     :name="customName"
-    @click="handleAction"
+    @click="changeLang"
+    :title="customTitle"
     :class="customClass"
   >
     <slot></slot>
@@ -14,9 +13,7 @@
 @import "./index.css";
 </style>
 
-
 <script>
-
 export default {
   name: "btnComponent",
   components: {},
@@ -25,22 +22,19 @@ export default {
       type: [String, Array],
       default: "",
     },
-    customName: {
-      type: [String, Array],
-      default: "btn",
-    },
     customTitle: {
       type: [String, Array],
       default: "click btn",
     },
-    buttonType: {
+    customName: {
       type: String,
-      default: "button",
+      required: true,
+      default: "",
     },
   },
   methods: {
-    handleAction() {
-      this.$emit("btnClicked",this.customName);
+    changeLang() {
+      this.$emit("changeLang", { Name: this.customName });
     },
   },
 };

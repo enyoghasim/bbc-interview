@@ -8,9 +8,9 @@
       </section>
       <section class="language">
         <ButtonBase
-          @btnClicked="setEvent"
+          @changeLang="changeLanguage"
+          customName="english"
           customTitle="English"
-          :customName="lang.eng"
           customClass="btn-lang"
         >
           <span class="flag-contain">
@@ -23,8 +23,8 @@
           <span>EN</span>
         </ButtonBase>
         <ButtonBase
-          @btnClicked="setEvent"
-          :customName="lang.ind"
+          @changeLang="changeLanguage"
+          customName="hindi"
           customTitle="India"
           customClass="btn-lang"
         >
@@ -38,20 +38,65 @@
           <span>IND</span>
         </ButtonBase>
       </section>
+
+      <Landing :data="hive" />
+      <section class="section-right">
+        <div class="search-box-container">
+          <SearchBox
+            @keyup="moveCursor"
+            :value="inputText"
+            customName="search"
+            :placeHolderText="hive.placeholder"
+            inputType="search"
+            @inputed="handleInput"
+            :search="search"
+            :isOpen="isOpen"
+            :currentActive="currentActive"
+            @addAndClose="addClose"
+          />
+        </div>
+        <div class="cigg">
+          <div v-show="!detailsOn">YOU HAVE NO YET SELECTED ANY CITY</div>
+          <div class="city-dit" v-show="detailsOn">
+            <div class="lome">
+              <span class="close" @click="closeAll">x</span>
+            </div>
+            <table class="tab">
+              <tr>
+                <th>CITY NAME</th>
+                <th>AIR QUALITY</th>
+                <th>NO OF CIGGERATES</th>
+              </tr>
+              <tr>
+                <td>{{ cityDetails[0].name }}</td>
+                <td>{{ cityDetails[0].aqi }}</td>
+                <td>{{ cityDetails[0].cigg }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="fotter-text">
+          <p class="paragraph p6">{{ hive.p6 }}</p>
+          <p class="paragraph p7">{{ hive.p7 }}</p>
+          <p class="paragraph p8">{{ hive.p8 }}</p>
+          <p class="paragraph p9">{{ hive.p9 }}</p>
+          <p class="paragraph p10">{{ hive.p10 }}</p>
+        </div>
+      </section>
+      <Footer />
     </div>
-    <Landing />
-    <Footer />
   </div>
 </template>
 
 <script>
-import convertToArray from "./helpers/index.js";
+import { convertToArray, getParagraphs } from "./helpers/index.js";
 import Landing from "./views/landing/index";
 import Footer from "./components/footer/index";
 import ButtonBase from "./components/button/index";
 import Logo from "./assets/icons/bbc.logo.svg";
-import { EnglishJsonData } from "./language/en-data.js";
+import EnglishJsonData from "./data/english.json";
 import HindiJsonData from "./data/hindi.json";
+import SearchBox from "./components/search/index";
 
 export default {
   name: "App",
@@ -59,35 +104,80 @@ export default {
     Landing,
     Footer,
     ButtonBase,
+    SearchBox,
   },
   methods: {
-    handleInput(event) {
-      this.inputText = event.newValue;
+    addClose(e) {
+      this.addAndClose(e);
     },
-    setEvent(lang) {
-      this.eventLang = lang;
-      console.log(this.eventLang);
-      switch (this.eventLang) {
-        case lang.eng:
-          this.int8n = EnglishJsonData;
-          console.log("english here", EnglishJsonData);
+    closeAll() {
+      this.detailsOn = false;
+      this.cityDetails = [{ name: "", aqi: "", cigg: "" }];
+    },
+    getCityDetails(text) {
+      this.cityDetails = this.list.filter((city) => {
+        return city.name.toLowerCase().includes(text.toLowerCase());
+      });
+      this.detailsOn = true;
+    },
+    moveCursor(event) {
+      switch (event.type) {
+        case "UP":
+          if (this.currentActive === 0) {
+            this.currentActive = this.search.length - 1;
+          } else {
+            this.currentActive--;
+          }
           break;
-        case lang.ind:
-          this.int8n = HindiJsonData;
-          console.log(JSON.stringify(this.int8n));
+        case "DOWN":
+          if (this.currentActive === this.search.length - 1) {
+            this.resetCurrentActive();
+          } else {
+            this.currentActive++;
+          }
+          break;
+        case "ENTER":
+          this.addAndClose(this.search[this.currentActive].name);
+          break;
+
+        default:
+          break;
+      }
+    },
+    resetCurrentActive() {
+      this.currentActive = 0;
+    },
+    handleInput(event) {
+      this.isOpen = true;
+      this.inputText = event.newValue;
+      this.resetCurrentActive();
+    },
+    addAndClose(event) {
+      this.inputText = event;
+      this.isOpen = false;
+      this.resetCurrentActive();
+      this.getCityDetails(event);
+    },
+    changeLanguage(event) {
+      switch (event.Name) {
+        case "english":
+          this.language = "ENGLISH";
+          break;
+        case "hindi":
+          this.language = "HINDI";
+          break;
+        default:
           break;
       }
     },
   },
   data() {
     return {
+      cityDetails: [{ name: "", aqi: "", cigg: "" }],
+      detailsOn: false,
+      isOpen: true,
+      currentActive: 0,
       inputText: "",
-      int8n: "",
-      eventLang: "",
-      lang: {
-        eng: "ENG",
-        ind: "IND",
-      },
       language: "ENGLISH",
       Logo,
       EnglishJsonData,
@@ -113,6 +203,30 @@ export default {
           : EnglishJsonData;
 
       return dataFunction;
+    },
+    search() {
+      var maped =
+        this.inputText.length > 0
+          ? this.list.filter((e) => {
+              return e.name
+                .toLowerCase()
+                .includes(this.inputText.toLowerCase());
+            })
+          : [];
+      return maped;
+    },
+    hive() {
+      var paragraphs = getParagraphs(this.data);
+      return {
+        ...paragraphs,
+        image: this.data["hero_1_image"],
+        placeholder: this.data["compare-tabs_1_title"],
+        title: this.data["hero_1_title"],
+        author: this.data["article-info_1_byline"],
+        createdOn: this.data["article-info_1_date"],
+        country: this.data["article-info_1_category"],
+        articleUrl: this.data["article-info_1_category_url"],
+      };
     },
   },
 };

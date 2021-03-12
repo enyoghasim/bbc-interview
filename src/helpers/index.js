@@ -1,5 +1,6 @@
+// import jsonData from "../data/english.json";
+
 const convertToArray = (obj) => {
-  // console.time("timer")
   let counter1 = 1;
   let counter2 = 1;
   let key = "";
@@ -20,7 +21,7 @@ const convertToArray = (obj) => {
       let objKey = `${regularText}${counter2}_${details}`;
       sampleObject = {
         ...sampleObject,
-        [objKey]: obj[objKey],
+        [details]: obj[objKey],
       };
       if (counter1 === 3) {
         outputArray.push(sampleObject);
@@ -33,6 +34,22 @@ const convertToArray = (obj) => {
     }
   }
   return outputArray;
-  //   console.timeEnd("timer")
 };
-module.exports = convertToArray;
+
+const getParagraphs = (data) => {
+  var x;
+  var obj = {};
+  var count = 1;
+  for (x in data) {
+    var string = `p_`;
+    const condition1 = x.toLowerCase().includes(string.toLowerCase());
+
+    if (condition1) {
+      obj = { ...obj, [`p${count}`]: data[`${string}${count}_value`] };
+      count++;
+    }
+  }
+  return obj;
+};
+
+export { convertToArray, getParagraphs };
