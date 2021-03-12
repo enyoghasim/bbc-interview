@@ -56,7 +56,12 @@
             />
           </div>
           <div class="cigg">
-            <div v-show="!detailsOn">{{ warning }}</div>
+            <div v-show="!detailsOn" class="warning">
+              <div>{{ warning }}</div>
+              <div class="help-cont">
+                <Help :titleText="`JUST TYPE YOUR CITY INTO THE SEARCH BOX`" />
+              </div>
+            </div>
             <div class="city-dit" v-show="detailsOn">
               <CityDetails :cityDetails="cityDetails" @closeAll="closeAll" />
             </div>
@@ -70,7 +75,28 @@
           </div>
         </section>
       </Landing>
-      <Footer />
+      <Footer
+        :fotterTitle="
+          isEnglish()
+            ? customJson.fotterTitle.english
+            : customJson.fotterTitle.hindi
+        "
+        :fotter1="
+          isEnglish()
+            ? customJson.fotterTextOne.english
+            : customJson.fotterTextOne.hindi
+        "
+        :fotter2="
+          isEnglish()
+            ? customJson.fotterTextTwo.english
+            : customJson.fotterTextTwo.hindi
+        "
+        :fotter3="
+          isEnglish()
+            ? customJson.fotterTextThree.english
+            : customJson.fotterTextThree.hindi
+        "
+      />
     </div>
   </div>
 </template>
@@ -83,8 +109,10 @@ import ButtonBase from "./components/button/index";
 import Logo from "./assets/icons/bbc.logo.svg";
 import EnglishJsonData from "./data/english.json";
 import HindiJsonData from "./data/hindi.json";
+import customJson from "./data/customlang.json";
 import SearchBox from "./components/search/index";
 import CityDetails from "./components/city-details-card/index";
+import Help from "./components/help/index";
 
 export default {
   name: "App",
@@ -94,6 +122,7 @@ export default {
     ButtonBase,
     SearchBox,
     CityDetails,
+    Help,
   },
   methods: {
     isEnglish() {
@@ -171,13 +200,14 @@ export default {
     return {
       cityDetails: [{ name: "", aqi: "", cigg: "" }],
       detailsOn: false,
-      isOpen: true,
+      isOpen: false,
       currentActive: 0,
       inputText: "",
       language: "ENGLISH",
       Logo,
       EnglishJsonData,
       HindiJsonData,
+      customJson,
     };
   },
   computed: {
@@ -200,8 +230,8 @@ export default {
     },
     warning() {
       return this.isEnglish()
-        ? "YOU HAVE NOT YET SELECTED ANY CITY"
-        : "आपने किसी भी शहर का चयन नहीं किया है";
+        ? customJson.placeholder.english
+        : customJson.placeholder.hindi;
     },
     search() {
       var maped =
@@ -214,6 +244,7 @@ export default {
           : [];
       return maped;
     },
+
     hive() {
       var paragraphs = getParagraphs(this.data);
       return {

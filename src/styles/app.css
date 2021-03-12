@@ -80,6 +80,12 @@ div.search-box-container {
 .language {
   padding: 5px;
 }
+.warning {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .city-dit {
   width: 50%;
 }
@@ -93,9 +99,7 @@ div.search-box-container {
   margin-top: -15px;
   padding-bottom: 15px;
 }
-p {
-  font-size: 15px;
-}
+
 .paragraph {
   padding: 5px 5px;
 }

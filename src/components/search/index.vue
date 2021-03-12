@@ -12,19 +12,18 @@
         autocomplete="off"
       />
     </div>
-    <div class="suggestions">
-      <div v-show="isOpen && inputType === 'search'" class="suggestion">
-        <div
-          :ref="currentActive === index ? 'active' : ''"
-          class="list-item"
-          :class="currentActive === index ? 'active' : ''"
-          v-for="(item, index) in search"
-          :key="index"
-          :word="item.name"
-          @click="$emit('addAndClose', item.name)"
-        >
-          {{ item.name }}
-        </div>
+
+    <div v-if="isOpen && inputType === 'search'" class="suggestion">
+      <div
+        :ref="currentActive === index ? 'active' : ''"
+        class="list-item"
+        :class="currentActive === index ? 'active' : ''"
+        v-for="(item, index) in search"
+        :key="index"
+        :word="item.name"
+        @click="$emit('addAndClose', item.name)"
+      >
+        {{ item.name }}
       </div>
     </div>
   </section>
@@ -33,6 +32,7 @@
 <script>
 export default {
   name: "SearchBox",
+
   props: {
     placeHolderText: {
       type: String,

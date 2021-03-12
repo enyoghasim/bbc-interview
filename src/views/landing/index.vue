@@ -13,14 +13,19 @@
         </picture>
       </div>
       <div class="right-column">
-        <a href="http://www.bbc.co.uk/news/world/asia/india" target="_blank">
-          <h2>'{{ data.title }}'</h2>
-        </a>
-        <p
-          class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary"
-        >
-          {{ data.p1 }}
-        </p>
+        <div class="right1">
+          <a href="http://www.bbc.co.uk/news/world/asia/india" target="_blank">
+            <h2>'{{ data.title }}'</h2>
+          </a>
+          <p
+            class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary"
+          >
+            {{ data.p1 }}
+          </p>
+        </div>
+        <div class="right2">
+          {{ data.author }} | {{ data.createdOn }} | {{ data.country }}
+        </div>
       </div>
     </div>
     <div class="content-paragraph">
@@ -28,7 +33,7 @@
       <p class="paragraph p3">{{ data.p3 }}</p>
       <p class="paragraph p4">{{ data.p4 }}</p>
       <p class="paragraph p5">{{ data.p5 }}</p>
-      <h4 class="note">*{{ data.compareTabs }}</h4>
+      <h4 class="note">{{ data.compareTabs }}</h4>
     </div>
     <slot></slot>
   </div>
