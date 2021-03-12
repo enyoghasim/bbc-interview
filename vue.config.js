@@ -1,8 +1,13 @@
 /* eslint-disable */ 
-import CompressionPlugin from "compression-webpack-plugin";
-import UglifyJsPlugin from "uglifyjs-webpack-plugin";
-import TerserPlugin from "terser-webpack-plugin";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+// import CompressionPlugin from "compression-webpack-plugin";
+// import UglifyJsPlugin from "uglifyjs-webpack-plugin";
+// import TerserPlugin from "terser-webpack-plugin";
+// import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+
+const  CompressionPlugin = require("compression-webpack-plugin");
+const UglifyJsPlugin= require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
     configureWebpack: {
