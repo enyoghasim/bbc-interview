@@ -45,8 +45,7 @@
 
 <script>
 export default {
-  name: "Landing-Content",
-
+  name: "LandingContent",
   props: {
     title: {
       type: String,

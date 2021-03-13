@@ -85,5 +85,11 @@ module.exports = {
             swSrc: "sw.js"
             // ...other Workbox options...
         }
+    },
+    devServer: {
+      overlay: {
+        warnings: true,
+        errors: true
+      }
     }
 };

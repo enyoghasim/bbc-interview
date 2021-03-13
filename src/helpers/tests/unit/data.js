@@ -1,3 +1,5 @@
+// sample data to equal with
+
 const expected1 = [
   { name: "Ghaziabad", aqi: "283 PM2.5", cigg: "12" },
   { name: "Noida", aqi: "213 PM2.5", cigg: "10" },
@@ -33,7 +35,8 @@ const expected1 = [
   { name: "Trivandrum", aqi: "53 PM2.5", cigg: "2" },
 ];
 const expected2 = {
-  p1:
-    "Breathing in Delhi is close to smoking more than a dozen cigarettes a day on an average. Click on your city to find out how many cigarettes you are smoking",
+
+  p1: "Breathing in Delhi is close to smoking more than a dozen cigarettes a day on an average. Click on your city to find out how many cigarettes you are smoking"
+
 };
 export { expected1, expected2 };

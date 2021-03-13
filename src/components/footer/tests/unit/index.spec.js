@@ -2,7 +2,7 @@ import { shallowMount } from "@vue/test-utils";
 import Footer from "../../index.vue";
 
 
-const Wrapper = shallowMount(<Footer/>,{
+const Wrapper = shallowMount(Footer,{
   propsData:{
 
   }

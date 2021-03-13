@@ -7,13 +7,13 @@ body {
 }
 .section-left .image-area {
   width: 100%;
-  height: 30px;
+  height: 100px;
   background: var(--bbc-ash);
   display: flex;
   justify-content: center;
 }
 .section-left .image-area .placeholder-logo {
-  width: 70px;
+  max-width: 70px;
   height: auto;
 }
 .ssrcss-47d2zd-StyledIcon {
@@ -102,6 +102,9 @@ div.search-box-container {
 
 .paragraph {
   padding: 5px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media only screen and (max-width: 720px) {
   .search-box-container {

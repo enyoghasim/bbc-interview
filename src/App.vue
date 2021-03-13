@@ -67,7 +67,12 @@
             </div>
           </div>
           <div class="fotter-text">
-            <p class="paragraph p6">{{ hive.p6 }}</p>
+            <p class="paragraph p6">
+              <span class="item-contain-param">{{ hive.p6 }}</span>
+              <span class="help-cont">
+                <Help :titleText="`Methodology for calculation`" />
+              </span>
+            </p>
             <p class="paragraph p7">{{ hive.p7 }}</p>
             <p class="paragraph p8">{{ hive.p8 }}</p>
             <p class="paragraph p9">{{ hive.p9 }}</p>
@@ -124,6 +129,20 @@ export default {
     CityDetails,
     Help,
   },
+  data() {
+    return {
+      cityDetails: [{ name: "", aqi: "", cigg: "" }],
+      detailsOn: false,
+      isOpen: false,
+      currentActive: 0,
+      inputText: "",
+      language: "ENGLISH",
+      Logo,
+      EnglishJsonData,
+      HindiJsonData,
+      customJson,
+    };
+  },
   methods: {
     isEnglish() {
       if (this.language === "ENGLISH") {
@@ -172,6 +191,13 @@ export default {
     resetCurrentActive() {
       this.currentActive = 0;
     },
+    reset() {
+      this.cityDetails = [{ name: "", aqi: "", cigg: "" }];
+      this.detailsOn = false;
+      this.isOpen = false;
+      this.currentActive = 0;
+      this.inputText = "";
+    },
     handleInput(event) {
       this.isOpen = true;
       this.inputText = event.newValue;
@@ -187,28 +213,17 @@ export default {
       switch (event.Name) {
         case "english":
           this.language = "ENGLISH";
+          this.reset();
           break;
         case "hindi":
           this.language = "HINDI";
+          this.reset();
+
           break;
         default:
           break;
       }
     },
-  },
-  data() {
-    return {
-      cityDetails: [{ name: "", aqi: "", cigg: "" }],
-      detailsOn: false,
-      isOpen: false,
-      currentActive: 0,
-      inputText: "",
-      language: "ENGLISH",
-      Logo,
-      EnglishJsonData,
-      HindiJsonData,
-      customJson,
-    };
   },
   computed: {
     list() {
