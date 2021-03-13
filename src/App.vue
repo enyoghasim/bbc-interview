@@ -39,7 +39,7 @@
         </ButtonBase>
       </section>
 
-      <Landing :data="hive">
+      <LandingContent :data="hive">
         <section class="section-right">
           <div class="search-box-container">
             <SearchBox
@@ -70,7 +70,7 @@
             <p class="paragraph p6">
               <span class="item-contain-param">{{ hive.p6 }}</span>
               <span class="help-cont">
-                <Help :titleText="`Methodology for calculation`" />
+                <Help :titleText="`How you came about.. i.e.Methodology for calculation`" />
               </span>
             </p>
             <p class="paragraph p7">{{ hive.p7 }}</p>
@@ -79,7 +79,7 @@
             <p class="paragraph p10">{{ hive.p10 }}</p>
           </div>
         </section>
-      </Landing>
+      </LandingContent>
       <Footer
         :fotterTitle="
           isEnglish()
@@ -108,7 +108,7 @@
 
 <script>
 import { convertToArray, getParagraphs } from "./helpers/index.js";
-import Landing from "./views/landing/index";
+import LandingContent from "./views/landing/index";
 import Footer from "./components/footer/index";
 import ButtonBase from "./components/button/index";
 import Logo from "./assets/icons/bbc.logo.svg";
@@ -122,7 +122,7 @@ import Help from "./components/help/index";
 export default {
   name: "App",
   components: {
-    Landing,
+    LandingContent,
     Footer,
     ButtonBase,
     SearchBox,

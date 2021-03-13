@@ -4,21 +4,23 @@
       <div class="card__inner_catalog_top">
         <section class="inner_left_section">
           <div class="tag">
-            <span @click="$emit('closeAll')" title="close">x</span>
+            <span @click="$emit('closeAll')" class="closeItem" title="close">
+              x
+            </span>
           </div>
 
           <div class="group">
             <h3 class="sub_title_header">CITY NAME :</h3>
-            <h4 class="title_card">{{ main.name }}</h4>
+            <h4 class="title_card titlename">{{ main.name }}</h4>
           </div>
           <div class="group">
             <h3 class="sub_title_header">AIR QUALITY:</h3>
-            <h4 class="title_card">{{ main.aqi }}</h4>
+            <h4 class="title_card titleaqi">{{ main.aqi }}</h4>
           </div>
           <div class="group cigg-group">
             <div class="group1">
               <h3 class="sub_title_header">NO OF CIGGERATES :</h3>
-              <h4 class="title_card">{{ main.cigg }}</h4>
+              <h4 class="title_card titlecigg">{{ main.cigg }}</h4>
             </div>
             <div class="group2">
               <img :src="ciggerlogo" class="image" alt="cigerate" />

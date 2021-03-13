@@ -14,7 +14,8 @@
 .services-icon {
   height: 26px;
   width: 24px;
-  fill: #fff;
+  fill: var(--bbc-white);
+  margin-right: 5px;
 }
 
 .col-section-main{

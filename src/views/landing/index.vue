@@ -15,7 +15,7 @@
       <div class="right-column">
         <div class="right1">
           <a href="http://www.bbc.co.uk/news/world/asia/india" target="_blank">
-            <h2>'{{ data.title }}'</h2>
+            <h2 class="tile">'{{ data.title }}'</h2>
           </a>
           <p
             class="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary"
@@ -47,10 +47,6 @@
 export default {
   name: "LandingContent",
   props: {
-    title: {
-      type: String,
-      default: "",
-    },
     data: {
       type: Object,
     },
