@@ -7,7 +7,7 @@
           <source media="(min-width:465px)" :srcset="data.image" />
           <img
             :src="data.image"
-            alt="Demonstrators react as tear gas is fired by police during a protest against the military coup in Yangon, Myanmar, 06 March 2021"
+            :alt="data.p1"
             class="lazyloaded"
           />
         </picture>

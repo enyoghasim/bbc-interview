@@ -14,11 +14,7 @@
           customClass="btn-lang"
         >
           <span class="flag-contain">
-            <img
-              src="https://media.flaticon.com/dist/min/img/flags/en.svg"
-              width="16"
-              height="11"
-            />
+            <img :src="AmericaFlag" width="16" height="11" />
           </span>
           <span>EN</span>
         </ButtonBase>
@@ -29,17 +25,16 @@
           customClass="btn-lang"
         >
           <span class="flag-contain">
-            <img
-              src="https://www.flaticon.com/svg/vstatic/svg/197/197419.svg?token=exp=1615156389~hmac=94fcefe5cec294f1b348f5bb78edf753"
-              width="16"
-              height="11"
-            />
+            <img :src="HindiFlag" width="16" height="11" />
           </span>
           <span>IND</span>
         </ButtonBase>
       </section>
 
-      <LandingContent :data="hive">
+      <!-- loader when there is lang toogle... -->
+      <div v-if="loading" class="loading">loading bro...</div>
+
+      <LandingContent v-else :data="hive">
         <section class="section-right">
           <div class="search-box-container">
             <SearchBox
@@ -70,7 +65,9 @@
             <p class="paragraph p6">
               <span class="item-contain-param">{{ hive.p6 }}</span>
               <span class="help-cont">
-                <Help :titleText="`How you came about.. i.e.Methodology for calculation`" />
+                <Help
+                  :titleText="`How you came about.. i.e.Methodology for calculation`"
+                />
               </span>
             </p>
             <p class="paragraph p7">{{ hive.p7 }}</p>
@@ -117,10 +114,29 @@ import HindiJsonData from "./data/hindi.json";
 import customJson from "./data/customlang.json";
 import SearchBox from "./components/search/index";
 import CityDetails from "./components/city-details-card/index";
+import AmericaFlag from "./assets/flag/united-states-of-america.png";
+import HindiFlag from "./assets/flag/india.png";
 import Help from "./components/help/index";
 
 export default {
   name: "App",
+  data() {
+    return {
+      cityDetails: [{ name: "", aqi: "", cigg: "" }],
+      detailsOn: false,
+      isOpen: false,
+      loading: true,
+      currentActive: 0,
+      inputText: "",
+      language: "ENGLISH",
+      Logo,
+      AmericaFlag,
+      HindiFlag,
+      EnglishJsonData,
+      HindiJsonData,
+      customJson,
+    };
+  },
   components: {
     LandingContent,
     Footer,
@@ -129,19 +145,8 @@ export default {
     CityDetails,
     Help,
   },
-  data() {
-    return {
-      cityDetails: [{ name: "", aqi: "", cigg: "" }],
-      detailsOn: false,
-      isOpen: false,
-      currentActive: 0,
-      inputText: "",
-      language: "ENGLISH",
-      Logo,
-      EnglishJsonData,
-      HindiJsonData,
-      customJson,
-    };
+  mounted() {
+    this.loading = true;
   },
   methods: {
     isEnglish() {
@@ -209,16 +214,21 @@ export default {
       this.resetCurrentActive();
       this.getCityDetails(event);
     },
+    loaderTimer(lang) {
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+        this.language = lang;
+        this.reset();
+      }, 2000);
+    },
     changeLanguage(event) {
       switch (event.Name) {
         case "english":
-          this.language = "ENGLISH";
-          this.reset();
+          this.loaderTimer("ENGLISH");
           break;
         case "hindi":
-          this.language = "HINDI";
-          this.reset();
-
+          this.loaderTimer("HINDI");
           break;
         default:
           break;
@@ -227,7 +237,7 @@ export default {
   },
   computed: {
     list() {
-      var listFunction = this.isEnglish()
+      const listFunction = this.isEnglish()
         ? convertToArray(EnglishJsonData)
         : !this.isEnglish()
         ? convertToArray(HindiJsonData)
@@ -235,7 +245,7 @@ export default {
       return listFunction;
     },
     data() {
-      var dataFunction = this.isEnglish()
+      const dataFunction = this.isEnglish()
         ? EnglishJsonData
         : !this.isEnglish()
         ? HindiJsonData
@@ -249,7 +259,7 @@ export default {
         : customJson.placeholder.hindi;
     },
     search() {
-      var maped =
+      const maped =
         this.inputText.length > 0
           ? this.list.filter((e) => {
               return e.name
@@ -261,7 +271,7 @@ export default {
     },
 
     hive() {
-      var paragraphs = getParagraphs(this.data);
+      const paragraphs = getParagraphs(this.data);
       return {
         ...paragraphs,
         compareTabs: this.data["compare-tabs_1_method"],
