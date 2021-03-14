@@ -32,11 +32,12 @@
       </section>
 
       <!-- loader when there is lang toogle... -->
-      <div v-if="loading" class="loading">
+      <div v-show="loading" class="loading">
         <div class="loader-spin"></div>
       </div>
+      <!-- loader endes here -->
 
-      <LandingContent v-else :data="hive">
+      <LandingContent v-show="!loading" :data="hive">
         <section class="section-right">
           <div class="search-box-container">
             <SearchBox
@@ -79,6 +80,7 @@
           </div>
         </section>
       </LandingContent>
+
       <Footer
         :fotterTitle="
           isEnglish()
