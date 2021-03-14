@@ -32,7 +32,9 @@
       </section>
 
       <!-- loader when there is lang toogle... -->
-      <div v-if="loading" class="loading">loading bro...</div>
+      <div v-if="loading" class="loading">
+        <div class="loader-spin"></div>
+      </div>
 
       <LandingContent v-else :data="hive">
         <section class="section-right">
@@ -146,7 +148,7 @@ export default {
     Help,
   },
   mounted() {
-    this.loading = true;
+    this.loading = false;
   },
   methods: {
     isEnglish() {
