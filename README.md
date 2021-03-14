@@ -57,7 +57,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Landing Page][product-screenshot]](https://example.com)
 
 ### Instructions
 
@@ -219,3 +219,4 @@ Project Link: [https://github.com/jeff-ofobrukweta/bbc-nobandwidth](https://gith
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [linkedin-url]: https://www.linkedin.com/in/ofobrukweta-jeff-207506136/
 [product-screenshot]: images/bbc-screen.png
+[product-precaching-config]: images/workbox_precaching.png
